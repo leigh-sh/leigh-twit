@@ -12,7 +12,7 @@ def load_user(id):
 
 @app.before_request
 def before_request():
-    '''is called before a request
+    '''is called before a request'''
     g.user = current_user
     if 'user_id' in session:
         g.user = query_db('select * from Users where user_id = ?',
