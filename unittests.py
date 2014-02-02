@@ -3,7 +3,7 @@ import os
 import unittest
 
 from config import basedir
-from app import app, db, SQLALCHEMY_DATABASE_URI
+from app import app, db
 from app.models import User, Post
 
 class MyTest(unittest.TestCase):
@@ -13,7 +13,6 @@ class MyTest(unittest.TestCase):
 
 	def setUp(self):
 		'''sets up a database before each test'''
-		app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
 		db.create_all()
     
     
