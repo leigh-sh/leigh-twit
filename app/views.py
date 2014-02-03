@@ -15,7 +15,7 @@ def before_request():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-	"""Displays the login page""" 
+	'''Displays the login page'''
 	if g.user:
 		return redirect(url_for('timeline'))
 	error = None
@@ -23,7 +23,7 @@ def login():
 	
 @app.route('/signout')
 def sign_out():
-    """Signs the user out"""
+    '''Signs the user out'''
     flash('You were signed out')
     session.pop('user_id', None)
     
