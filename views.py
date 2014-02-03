@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, g, session, request
 from flask.ext.login import login_manager
-from app import app,lm
-from forms import LoginForm
+from app import app,login_manager
 
 
 @login_manager.user_loader
@@ -40,32 +39,6 @@ def login():
 			return redirect(url_for('timeline'))
             
 	return render_template('login.html', error=error)
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    """Registers the user"""
-    if g.user:
-    
-        return redirect(url_for('timeline'))
-        
-    error = None
-    if request.method == 'POST':
-        if not request.form['username']:
-            error = 'Please enter a username'
-        elif not request.form['password']:
-            error = 'Please enter a password'
-        else:
-            db = get_db()
-            db.execute('''insert into Users (
-              username, pw_hash) values (?, ?, ?)''',
-              [request.form['username'],
-               generate_password_hash(request.form['password'])])
-            db.commit()
-            flash('Registered successfully')
-            
-            return redirect(url_for('login'))
-    return render_template('login.html', error=error)
 
 
 @app.route('/signout')
