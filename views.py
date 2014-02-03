@@ -1,10 +1,10 @@
 from flask import render_template, flash, redirect, g, session, request
-from flask.ext.login import login_user
+from flask.ext.login import login_manager
 from app import app,lm
 from forms import LoginForm
 
 
-@lm.user_loader
+@login_manager.user_loader
 def load_user(id):
 	'''Login manager. Reloads the user from the database'''
     return User.query.get(int(id)) ## conversion to int, flask-login accepts userid as int
