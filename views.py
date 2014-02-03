@@ -82,4 +82,7 @@ def internal_error(error):
 	'''Error handler'''
 	return render_template('404.html'), 404
 
-@app.errorhandler(500)
+def internal_error(error):
+	'''Error handler'''
+	db.session.rollback()
+	return render_template('500.html'), 500
