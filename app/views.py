@@ -1,3 +1,7 @@
+from flask import render_template, flash, redirect, g, session, request
+from flask.ext.login import current_user, login_user, logout_user
+from app import app, login_manager
+
 @login_manager.user_loader
 def load_user(id):
 	'''Callback. Reloads the user from the database'''
