@@ -1,14 +1,14 @@
 @login_manager.user_loader
 def load_user(id):
 	'''Callback. Reloads the user from the database'''
-    return User.query.get(int(id)) ## conversion to int, flask-login accepts userid as int
+	return User.query.get(int(id)) ## conversion to int, flask-login accepts userid as int
 
 
 @app.before_request
 def before_request():
-    '''called before a request'''
-    g.user = current_user
-    if session['user_id']:
+	'''called before a request'''
+	g.user = current_user
+	if session['user_id']:
 		g.user = query_db('select * from Users where user_id = ?',
                 session['user_id'], one=True)
 
