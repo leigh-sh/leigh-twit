@@ -56,7 +56,7 @@ def sign_out():
     '''Signs the user out'''
     flash('You were signed out')
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('global_feed'))
     
     
 ##Decorators to handle errors 
