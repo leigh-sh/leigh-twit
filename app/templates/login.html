@@ -6,16 +6,12 @@
 <script type="text/javascript">
 form = document.forms['login'];
 </script>
-<h1><img HEIGHT="90" WIDTH="200" src="/static/Login-Button.png"/></h1>
+<h1><img HEIGHT="90" WIDTH="150" src="/static/Login-Button.png"/></h1>
 <form action="" method="post" name="login">
-    {{form.hidden_tag()}}
     <dl>
-    <dt>Enter your user name and press the bird:
-    <dd><input type=text name=user_name size=30 value="{{ request.form.user_name }}">
+    <dt><h2>Enter your user name and press the bird:</h2>
+    <dd><input type=text name=user_name size=60 value="{{ request.form.user_name }}">
     </dl>
-    <div class=actions><input type="image" src="/static/Twitter-Bird.png" alt="Submit Form" value="Login" text="some text"/></div>
+    <div class=actions><input type="image" src="/static/loginbird.png" alt="Submit Form" value="Login"/></div>
 </form>
 {% endblock %}
-
-
-
