@@ -1,17 +1,18 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
-
 {% block content %}
 <script type="text/javascript">
-form = document.forms['login'];
 </script>
 <h1><img HEIGHT="90" WIDTH="150" src="/static/Login-Button.png"/></h1>
 <form action="" method="post" name="login">
     <dl>
-    <dt><h2>Enter your user name and press the bird:</h2>
+    <dt><h2>Enter your user name and click on the bird:</h2>
     <dd><input type=text name=user_name size=60 value="{{ request.form.user_name }}">
     </dl>
     <div class=actions><input type="image" src="/static/loginbird.png" alt="Submit Form" value="Login"/></div>
-</form>
+</form> </br></br></br></br>
+<img src="/static/register.png"><h2>Click on the bird to register</h2>
+<div><a href="/register.html"><img src="/static/registerbird.png"></a></div>
+
 {% endblock %}
