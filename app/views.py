@@ -20,7 +20,7 @@ def before_request():
 @login_required
 def global_feed():
 	user = g.user
-	print 'in global, g.user: %s' % g.user    
+	print 'in global, g.user: %s' % g.user    // DEBUG
 	posts = [
         { 
             //TODO 
