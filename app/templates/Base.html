@@ -3,14 +3,12 @@
     {% if title %}
     <title>{{title}}</title>
     {% else %}
-    <title>Leigh-Twitter</title>
+    <title>Leigh-Twit</title>
     {% endif %}
   </head>
 
-<div id="background">
-    <img src="/static/birds.png" class="stretch" alt="" />
-</div>
-  <body bgcolor="#5DBCD2"> 
+
+  <body background="/static/birds.png"> 
     <hr>
     {% with messages = get_flashed_messages() %}
     {% if messages %}

@@ -1,0 +1,20 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+</script>
+<h1><img HEIGHT="90" WIDTH="150" src="/static/registerbird.png"/></h1>
+<form action="/register" method="post" name="register">
+    <dl>
+    <dt><h2>Enter your user desired name and click on the bird:</h2>
+    <dd><input type=text name=user_name size=60 value="{{user_name }}">
+    </dl>
+</form> 
+<div><a href="{{ url_for('login')}}"><img HEIGHT="150" src="/static/loginbird.png"></a></div>
+
+{% endblock %}
+
+
+

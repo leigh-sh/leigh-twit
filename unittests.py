@@ -1,4 +1,4 @@
-
+#!flask/bin/python
 import os
 import unittest
 
@@ -35,7 +35,45 @@ class MyTest(unittest.TestCase):
 		tester = app.test_client(self)
 		response = tester('/signout', content_type='html/text')
 		self.assertEqual(response.status_code,200)
+		
+		
+    def create_unique_username(self):
+        leigh = User(user_name = 'leigh')
+        db.session.add(leigh)
+        db.session.commit()
+        username = User.create_unique_username('leigh')
+        assert nickname != 'leigh'
+
+        leigh = User(user_name = username)
+        db.session.add(leigh)
+        db.session.commit()
+        another_username = User.create_unique_username('leigh')
+        assert another_username != 'leigh'
+        assert another_username != username
         
-          
+    def test_follow(self):
+        leigh = User(user_name = 'leigh')
+        shaniv = User(user_name = 'shaniv')
+        db.session.add(leigh)
+        db.session.add(shaniv)
+        db.session.commit()
+        assert leigh.unfollow(shaniv) == None
+        test_user = leigh.follow(shaniv)
+        db.session.add(test_user)
+        db.session.commit()
+        assert leigh.follow(shaniv) == None
+        assert leigh.is_following(shaniv)
+        assert leigh.followed.count() == 1
+        assert leigh.followed.first().user_name == 'shaniv'
+        assert shaniv.followers.count() == 1
+        assert shaniv.followers.first().user_name == 'leigh'
+        test_user = leigh.unfollow(shaniv)
+        assert test_user != None
+        db.session.add(test_user)
+        db.session.commit()
+        assert leigh.is_following(shaniv) == False
+        assert leigh.followed.count() == 0
+        assert shaniv.followers.count() == 0  
+               
 if __name__ == '__main__':
 	unittest.main()
